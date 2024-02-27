@@ -4,13 +4,11 @@ import "./App.css";
 import Submission from "./components/submission.jsx";
 import getFlikrAPIResponse from "./tools/api-response.js";
 
-
 function App() {
-
   const flickrUrlRoot =
     "https://api.flickr.com/services/feeds/photos_public.gne?nojsoncallback=1&format=json&tags=";
   const [feed, setFeed] = useState([]);
-  const [search, setSearch] = useState("tree")
+  const [search, setSearch] = useState("tree");
 
   useEffect(() => {
     getFlikrAPIResponse(flickrUrlRoot + search)
@@ -21,23 +19,37 @@ function App() {
       .catch(function (error) {
         console.error("Failed!", error);
       });
-  }, []);
+  }, [search]);
 
   return (
     <div id="container">
       <header className="App-header">
-        <h1>Flickr App</h1>  
+        <h1>Flickr Search</h1>
+        <input
+          style={{
+            margin: "20px",
+            width: "40%",
+            padding: "10px",
+            borderRadius: "25px",
+          }}
+          type="text"
+          name="name"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </header>
+
       <div id="submission-list">
         {feed.map((item) => {
-          let key = item["date_taken"] + item["author_id"];
           return (
             <Submission
-              key={key}
+              key={item["link"]}
+              dataKey={item["link"]}
               title={item["title"]}
               description={item["description"]}
               published={item["published"]}
-              media={item["media"]["m"]}
+              search={search}
+              tags={item["tags"]}
             />
           );
         })}
