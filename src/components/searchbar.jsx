@@ -15,6 +15,7 @@ export default function SearchBar({
         type="text"
         name="name"
         value={searchbarValue}
+        onFocus={(e) => e.target.select()}
         onChange={(e) => setSearchbarValue(e.target.value)}
       />
       <div>
