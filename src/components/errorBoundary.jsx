@@ -16,7 +16,11 @@ export class ErrorBoundary extends React.Component {
 
    render() {
      if (this.state.hasError) {
-       return <h1>An error has occurred in component rendering!</h1>;
+       return (
+         <div style={{padding:"50px"}}>
+           <h1>An error has occurred in component rendering!</h1>
+         </div>
+       );
      }
      return this.props.children;
    }
