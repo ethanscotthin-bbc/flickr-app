@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   padding: 100;
+  min-height: 100vh;
 }
 
 #submission-list {
@@ -33,4 +34,14 @@ button {
   background-color: white;
   border: 2px solid;
   border-color: rgb(193, 193, 193);
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #282c34;
+  color: white;
+  text-align: center;
 }

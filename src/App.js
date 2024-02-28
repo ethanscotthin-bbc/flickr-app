@@ -86,6 +86,11 @@ function App() {
           })
         )}
       </div>
+      <br />
+      <br />
+      <footer>
+        <p>Ethan-Scott Hin</p>
+      </footer>
     </div>
   );
 }
